@@ -1,9 +1,6 @@
 :root {
   color-scheme: light;
 
-  /* Measured WCAG contrast: ink on background 16.6:1 · muted on background 5.9:1 ·
-     accent on background 6.0:1 · surface on accent 6.5:1 · ink on whatsapp 9.0:1 ·
-     accent-light on ink 8.4:1. Re-check these if a color changes. */
   --color-ink: #0b1630;
   --color-background: #f3f6fb;
   --color-surface: #ffffff;
@@ -13,7 +10,6 @@
   --color-border: #dfe5f0;
   --color-whatsapp: #25d366;
 
-  /* Derived from the solid colors so that changing one color updates its variants */
   --color-on-dark-strong: color-mix(in srgb, var(--color-surface) 88%, transparent);
   --color-on-dark: color-mix(in srgb, var(--color-surface) 80%, transparent);
   --color-on-dark-muted: color-mix(in srgb, var(--color-surface) 72%, transparent);
@@ -77,7 +73,6 @@
   --letter-spacing-heading: 0.01em;
   --letter-spacing-caps: 0.06em;
 
-  /* Spacing scale: the number is how many quarters of a rem (4px) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -201,8 +196,6 @@ a {
   text-underline-offset: 0.2em;
 }
 
-/* :where() keeps specificity low, so components with their own border-radius keep their shape on focus.
-   Dark areas switch the ring to white by setting --focus-color. */
 :where(a, summary):focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-color, var(--color-accent));
   outline-offset: var(--focus-offset, var(--focus-ring-offset));

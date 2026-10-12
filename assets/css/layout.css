@@ -1,6 +1,3 @@
-/* Page regions and their structure. Reusable pieces live in components.css,
-   breakpoint overrides in responsive.css. */
-
 .container {
   width: 100%;
   max-width: calc(var(--content-width) + 2 * var(--gutter));
@@ -98,7 +95,6 @@
   text-transform: uppercase;
 }
 
-/* Pulsing green dot: signals that the technician is available to answer */
 .hero__eyebrow::before {
   content: "";
   flex: none;
@@ -142,7 +138,6 @@
   min-height: 22rem;
 }
 
-/* Absolutely positioned so the decorative rings never push the layout around */
 .hero__orbit {
   position: absolute;
   top: 50%;
@@ -164,7 +159,6 @@
 }
 
 .stats {
-  /* Positioned so the card paints above the hero decorations it overlaps */
   position: relative;
   display: grid;
   margin-top: calc(-1 * var(--space-12));
@@ -261,7 +255,6 @@
   padding-inline: var(--space-4);
 }
 
-/* The QR code only makes sense on a computer screen that a phone can scan */
 .contact-card__qr {
   display: none;
   gap: var(--space-4);

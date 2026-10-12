@@ -13,8 +13,8 @@ The owner's name is always "Salatiel Barros", everywhere: page, docs, alt text a
 ## Structure and conventions
 
 - `index.html` holds content only. No inline `<style>`, `<script>` (except the JSON-LD data block, which Google requires inline), `style=` or `on*=` attributes.
-- Code and code comments are in English. Visitor-facing text is in Portuguese. Comments explain *why*, never *what*.
-- Owner-supplied content that hasn't been filled in yet is marked `[SUBSTITUIR]` (visible text or an HTML comment next to a short token like `[X]`). Never invent real values for statistics, the domain, etc. Never write testimonials. The owner removed that section until real ones exist, so add it back only with texts the owner supplies. Business claims (prices, free diagnosis, warranty, service area) come from the owner. Don't reword them into stronger promises.
+- Code is in English. Visitor-facing text is in Portuguese. The owner wants no comments in HTML, CSS or JS. Put explanations in your reply, not in the code. `.gitignore` keeps its comments.
+- Owner-supplied content that hasn't been filled in yet goes in visible text marked `[SUBSTITUIR]`, or you ask the owner. Never invent real values for statistics, the domain, etc. Never write testimonials. The owner removed that section until real ones exist, so add it back only with texts the owner supplies. Business claims (prices, free diagnosis, warranty, service area) come from the owner. Don't reword them into stronger promises.
 
 ### CSS (`assets/css/`, loaded in this order)
 

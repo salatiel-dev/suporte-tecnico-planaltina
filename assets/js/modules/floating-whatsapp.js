@@ -17,7 +17,6 @@ const updateSectionsOnScreen = (sectionsOnScreen, entries) => {
   });
 };
 
-// Those sections already show a WhatsApp button, so a second, floating one would be noise.
 const hideWhileSectionsAreOnScreen = (button, sections) => {
   const sectionsOnScreen = new Set();
   const observer = new IntersectionObserver((entries) => {

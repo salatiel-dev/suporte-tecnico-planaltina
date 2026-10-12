@@ -15,7 +15,6 @@ const revealElement = (element, order) => {
   element.classList.add(VISIBLE_CLASS);
 };
 
-// Elements that enter the viewport in the same frame are staggered, so a row of cards cascades.
 const handleIntersections = (entries, observer) => {
   entries
     .filter((entry) => entry.isIntersecting)
@@ -33,7 +32,6 @@ export const initScrollReveal = () => {
     rootMargin: REVEAL_SETTINGS.rootMargin,
   });
 
-  // The pending class is added here, not in the HTML, so the content stays visible without JavaScript.
   elements.forEach((element) => {
     element.classList.add(PENDING_CLASS);
     observer.observe(element);

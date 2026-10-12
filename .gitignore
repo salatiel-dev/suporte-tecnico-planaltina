@@ -1,0 +1,239 @@
+# .gitignore: arquivos e pastas que o Git deve ignorar.
+# O Git não mostra esses arquivos no "git status" e não os inclui no "git add".
+#
+# Atenção: isso só vale para arquivos que ainda NÃO entraram em nenhum commit.
+# Um arquivo que já foi para o histórico continua lá mesmo que apareça aqui
+# (veja o README, seção "Dados pessoais e privacidade").
+#
+# Como ler as regras:
+#   pasta/      ignora a pasta inteira, em qualquer lugar do projeto
+#   *.log       ignora todo arquivo que termina em .log (o * vale "qualquer coisa")
+#   !arquivo    exceção: volta a incluir um arquivo que outra regra ignorou
+
+
+# ---------------------------------------------------------------------------
+# Sistema operacional
+# Arquivos que o Windows, o macOS e o Linux criam sozinhos dentro das pastas.
+# ---------------------------------------------------------------------------
+
+# Windows: miniaturas de imagens, configuração de pasta, lixeira e atalhos
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS: configuração de pasta (.DS_Store) e arquivos de índice e lixeira
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# Linux: cópias automáticas de editores, configuração de pasta e lixeira
+*~
+.directory
+.Trash-*
+.nfs*
+
+
+# ---------------------------------------------------------------------------
+# Editores e IDEs
+# Configurações pessoais do seu editor. Cada pessoa tem as suas.
+# ---------------------------------------------------------------------------
+
+# VS Code: ignora as configurações pessoais...
+.vscode/*
+# ...mas deixa compartilhar a lista de extensões recomendadas (ex.: Live Server)
+!.vscode/extensions.json
+
+# Extensão Local History do VS Code (guarda cópias de cada arquivo salvo)
+.history/
+
+# JetBrains (WebStorm, IntelliJ etc.)
+.idea/
+
+# Sublime Text
+*.sublime-workspace
+
+# Vim: arquivos temporários de edição
+*.swp
+*.swo
+
+# Claude Code: configurações locais e pessoais
+.claude/settings.local.json
+
+
+# ---------------------------------------------------------------------------
+# Logs, temporários e backups
+# Arquivos criados durante o trabalho que não fazem parte do site.
+# ---------------------------------------------------------------------------
+
+# Logs (registros de execução de programas)
+*.log
+
+# Temporários
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Arquivo temporário que o Word e o Excel criam enquanto o documento está aberto
+~$*
+
+# Cópias de segurança feitas à mão ou por programas
+*.bak
+*.backup
+*.old
+*.orig
+
+# Cópias compactadas (ex.: "site-final.zip" ou uma pasta de cliente zipada)
+*.zip
+*.rar
+*.7z
+
+
+# ---------------------------------------------------------------------------
+# Dependências e builds
+# Hoje o projeto não usa nada disso. Fica pronto caso você adote ferramentas
+# no futuro (npm, empacotadores, ferramentas de linha de comando das hospedagens).
+#   dependência: biblioteca baixada por um gerenciador de pacotes, como o npm
+#   build: versão do site gerada automaticamente por uma ferramenta
+# As duas podem ser recriadas a qualquer momento, então não vão para o Git.
+# ---------------------------------------------------------------------------
+
+# Bibliotecas baixadas pelo npm, pnpm ou yarn
+node_modules/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Pastas de saída de build e caches de ferramentas
+dist/
+build/
+.cache/
+.parcel-cache/
+.sass-cache/
+
+# Pastas locais das ferramentas de linha de comando da Netlify e da Cloudflare
+.netlify/
+.wrangler/
+
+
+# ---------------------------------------------------------------------------
+# Segredos
+# Senhas, tokens, chaves e certificados. Se um desses for para o GitHub,
+# considere vazado e troque na hora.
+# ---------------------------------------------------------------------------
+
+# Arquivos .env guardam senhas e chaves de serviços
+.env
+.env.*
+# Exceção: um modelo sem valores reais, que mostra quais variáveis existem
+!.env.example
+
+# Chaves e certificados
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Chaves SSH (acesso a servidores e ao GitHub)
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+
+# Arquivos de credenciais de serviços
+credentials.json
+
+# Cofre de senhas do KeePass
+*.kdbx
+
+
+# ---------------------------------------------------------------------------
+# Pastas privadas do negócio
+# O melhor é guardar isso FORA da pasta do projeto. Se precisar guardar aqui
+# dentro, use exatamente um desses nomes de pasta.
+# ---------------------------------------------------------------------------
+
+privado/
+clientes/
+contratos/
+propostas/
+orcamentos/
+comprovantes/
+financeiro/
+
+# Documentos soltos: contratos, propostas e comprovantes costumam ser PDF ou Word.
+# Se um dia o site precisar publicar um PDF, crie uma exceção com "!".
+*.pdf
+*.doc
+*.docx
+*.odt
+
+
+# ---------------------------------------------------------------------------
+# Planilhas e exportações
+# Podem ter dados pessoais de clientes (nome, telefone, endereço, CPF).
+# ---------------------------------------------------------------------------
+
+# Planilhas
+*.xlsx
+*.xls
+*.xlsm
+*.ods
+*.csv
+*.tsv
+
+# Contatos exportados do celular ou do e-mail
+*.vcf
+
+# Conversas exportadas do WhatsApp
+# [verificar o nome do arquivo que o seu celular gera]
+Conversa do WhatsApp*
+WhatsApp Chat*
+
+# Bancos de dados e cópias de bancos de dados
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+
+
+# ---------------------------------------------------------------------------
+# Imagens originais pesadas
+# O site usa só as versões leves que ficam em assets/img/. NÃO ignore a pasta
+# assets/img/ inteira: as imagens do site precisam ir para o repositório.
+# Fotos originais também podem ter metadados, como a localização GPS.
+# ---------------------------------------------------------------------------
+
+# Pastas para guardar os originais
+originais/
+fotos-originais/
+
+# Qualquer arquivo com "-original" no nome (ex.: foto-salatiel-original.jpg)
+*-original.*
+
+# Formatos de câmera e de celular (fotos grandes, sem compressão para a web)
+*.heic
+*.heif
+*.raw
+*.dng
+*.cr2
+*.nef
+*.arw
+*.tif
+*.tiff
+
+# Arquivos de edição de imagem (Photoshop, GIMP)
+*.psd
+*.xcf

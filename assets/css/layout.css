@@ -1,0 +1,318 @@
+/* Page regions and their structure. Reusable pieces live in components.css,
+   breakpoint overrides in responsive.css. */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--content-width) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section--surface {
+  background: var(--color-surface);
+}
+
+.section--accent {
+  --title-bar-color: var(--color-surface);
+
+  background-color: var(--color-accent);
+  background-image: var(--pattern-grid);
+  background-size: var(--pattern-grid-size);
+  color: var(--color-surface);
+}
+
+.section__header {
+  margin-bottom: var(--space-8);
+}
+
+.section__header > .section__title {
+  margin-bottom: 0;
+}
+
+.section__title {
+  margin-bottom: var(--space-8);
+  font-size: var(--font-size-heading);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.section__title::after {
+  content: "";
+  display: block;
+  width: var(--space-12);
+  height: 4px;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--title-bar-color, var(--color-accent));
+}
+
+.section__intro {
+  max-width: var(--measure);
+  margin-top: var(--space-5);
+  color: var(--color-muted);
+  font-size: var(--font-size-body-large);
+}
+
+.hero {
+  --focus-color: var(--color-surface);
+
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 7vh, 6rem) clamp(5rem, 10vh, 8rem);
+  background-color: var(--color-ink);
+  background-image:
+    radial-gradient(circle at 85% 30%, var(--color-accent-glow), transparent 50%),
+    var(--pattern-grid);
+  background-size: auto, var(--pattern-grid-size), var(--pattern-grid-size);
+  color: var(--color-surface);
+}
+
+.hero__inner {
+  display: grid;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-on-dark);
+  border-radius: var(--radius-pill);
+  background: var(--color-on-dark-fill);
+  color: var(--color-on-dark-strong);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-caps);
+  line-height: var(--line-height-snug);
+  text-transform: uppercase;
+}
+
+/* Pulsing green dot: signals that the technician is available to answer */
+.hero__eyebrow::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-circle);
+  background: var(--color-whatsapp);
+  animation: pulse var(--duration-pulse) var(--easing-decelerate) infinite;
+}
+
+.hero__title {
+  font-size: var(--font-size-display);
+  letter-spacing: var(--letter-spacing-display);
+  line-height: var(--line-height-display);
+}
+
+.hero__answer {
+  display: block;
+  margin-top: 0.35em;
+  color: var(--color-accent-light);
+}
+
+.hero__lead {
+  max-width: 38ch;
+  margin-block: var(--space-5) var(--space-8);
+  color: var(--color-on-dark);
+  font-size: var(--font-size-subtitle);
+  line-height: var(--line-height-normal);
+}
+
+.hero__note {
+  margin-top: var(--space-4);
+  color: var(--color-on-dark-muted);
+  font-size: var(--font-size-label);
+}
+
+.hero__visual {
+  position: relative;
+  display: none;
+  place-items: center;
+  min-height: 22rem;
+}
+
+/* Absolutely positioned so the decorative rings never push the layout around */
+.hero__orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1;
+  border: 1px dashed var(--color-on-dark-border);
+  border-radius: var(--radius-circle);
+  translate: -50% -50%;
+  animation: spin var(--duration-spin) linear infinite;
+}
+
+.hero__orbit--large {
+  width: 30rem;
+}
+
+.hero__orbit--small {
+  width: 21rem;
+  animation-direction: reverse;
+}
+
+.stats {
+  /* Positioned so the card paints above the hero decorations it overlaps */
+  position: relative;
+  display: grid;
+  margin-top: calc(-1 * var(--space-12));
+  padding: clamp(1.25rem, 0.75rem + 2.5vw, 2.25rem) var(--space-card);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.stats__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  padding-block: var(--space-4);
+}
+
+.stats__item:first-child {
+  padding-top: 0;
+}
+
+.stats__item:last-child {
+  padding-bottom: 0;
+}
+
+.stats__item + .stats__item {
+  border-top: var(--border-card);
+}
+
+.stats__value {
+  color: var(--color-accent);
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-none);
+}
+
+.stats__label {
+  color: var(--color-muted);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+}
+
+.about {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.about__photo {
+  width: min(100%, 13rem);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+}
+
+.about__text {
+  max-width: var(--measure);
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-relaxed);
+}
+
+.faq__list {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 48rem;
+}
+
+.contact-card {
+  --focus-color: var(--color-surface);
+
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  width: calc(100% - 2 * var(--gutter));
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 0.25rem + 4.5vw, 3.75rem);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-ink);
+  background-image: radial-gradient(circle at 0% 0%, var(--color-accent-glow), transparent 55%);
+  color: var(--color-surface);
+}
+
+.contact-card__title {
+  max-width: 22ch;
+  margin-bottom: var(--space-8);
+  font-size: var(--font-size-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+}
+
+.contact-card__button {
+  padding-inline: var(--space-4);
+}
+
+/* The QR code only makes sense on a computer screen that a phone can scan */
+.contact-card__qr {
+  display: none;
+  gap: var(--space-4);
+  width: 12rem;
+}
+
+.contact-card__qr-image {
+  width: 100%;
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.contact-card__qr-caption {
+  color: var(--color-on-dark-muted);
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-normal);
+}
+
+.footer {
+  --focus-color: var(--color-surface);
+
+  padding-block: var(--space-10);
+  background: var(--color-ink);
+  color: var(--color-on-dark-muted);
+  font-size: var(--font-size-label);
+}
+
+.footer__main {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.footer__contact {
+  display: grid;
+  gap: var(--space-1);
+  font-style: normal;
+  line-height: var(--line-height-normal);
+}
+
+.footer__name {
+  color: var(--color-surface);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+}
+
+.footer__link {
+  color: var(--color-surface);
+}
+
+.footer__copyright {
+  margin-top: var(--space-8);
+  color: var(--color-on-dark-faint);
+}

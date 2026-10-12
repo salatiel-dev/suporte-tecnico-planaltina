@@ -1,0 +1,595 @@
+/* Icons are SVG masks painted with currentColor, so each one is recolored with `color`. */
+.button--whatsapp::before,
+.whatsapp-float::before,
+.business__item::before,
+.guarantees__item::before,
+.faq-item__question::after {
+  content: "";
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--gutter);
+  z-index: var(--layer-skip-link);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-weight: var(--font-weight-bold);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--size-touch-target);
+  padding: var(--space-3) var(--space-7);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-title);
+  text-align: center;
+  text-decoration: none;
+  text-wrap: balance;
+  transition-property: background-color, color, transform, box-shadow;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--easing-standard);
+}
+
+.button--whatsapp {
+  background: var(--color-whatsapp);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-whatsapp);
+}
+
+.button--whatsapp::before {
+  --icon: var(--icon-whatsapp);
+
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+}
+
+.button--whatsapp:hover {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised);
+  transform: translateY(var(--motion-lift));
+}
+
+/* A white hover would disappear on a light background, so it turns navy instead */
+.button--on-light:hover {
+  background: var(--color-ink);
+  color: var(--color-surface);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button__phone {
+  display: block;
+}
+
+.whatsapp-float {
+  --focus-color: var(--color-ink);
+  --focus-offset: 3px;
+
+  position: fixed;
+  right: max(var(--space-4), env(safe-area-inset-right));
+  bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  z-index: var(--layer-floating);
+  display: grid;
+  place-items: center;
+  width: var(--size-floating-button);
+  height: var(--size-floating-button);
+  border-radius: var(--radius-circle);
+  background: var(--color-whatsapp);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-floating);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(var(--motion-drop)) scale(var(--motion-shrink));
+  transition-property: opacity, transform, visibility;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--easing-standard);
+}
+
+.whatsapp-float::before {
+  --icon: var(--icon-whatsapp);
+
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
+}
+
+.whatsapp-float--visible {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+.whatsapp-float--visible:hover {
+  transform: scale(var(--motion-grow));
+}
+
+.card {
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.service-list {
+  display: grid;
+  gap: var(--space-3);
+  counter-reset: service;
+}
+
+.service-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: start;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-5);
+  counter-increment: service;
+  transition-property: border-color, transform, box-shadow;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--easing-standard);
+}
+
+.service-card::before {
+  content: counter(service, decimal-leading-zero);
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: var(--size-badge);
+  height: var(--size-badge);
+  border-radius: var(--radius-md);
+  background: var(--color-accent-tint);
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-bold);
+}
+
+.service-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+  transform: translateY(var(--motion-lift));
+}
+
+.service-card__text {
+  color: var(--color-muted);
+  line-height: var(--line-height-normal);
+}
+
+.business {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  padding: var(--space-card);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-ink);
+  background-image: radial-gradient(circle at 100% 0%, var(--color-accent-glow), transparent 55%);
+  color: var(--color-surface);
+}
+
+.business__tag {
+  display: inline-block;
+  margin-bottom: var(--space-4);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-light-tint);
+  color: var(--color-accent-light);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+}
+
+.business__title {
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-title);
+}
+
+.business__text {
+  margin-top: var(--space-3);
+  color: var(--color-on-dark);
+}
+
+.business__list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.business__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
+  padding: var(--space-4);
+  border: var(--border-on-dark);
+  border-radius: var(--radius-lg);
+  background: var(--color-on-dark-fill);
+  color: var(--color-on-dark);
+  line-height: var(--line-height-normal);
+}
+
+.business__item::before {
+  --icon: var(--icon-check);
+
+  grid-row: span 2;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  /* Centers the icon on the first line of text */
+  margin-top: calc((var(--line-height-normal) * 1em - var(--size-icon-md)) / 2);
+  color: var(--color-accent-light);
+}
+
+.business__item-title {
+  color: var(--color-surface);
+}
+
+.services-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  padding: clamp(var(--space-6), 1rem + 2vw, 2.25rem);
+  border-radius: var(--radius-xl);
+}
+
+.services-cta__text {
+  max-width: 34ch;
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  text-wrap: balance;
+}
+
+.steps {
+  --marker-size: 3rem;
+  --marker-half: calc(var(--marker-size) / 2);
+
+  display: grid;
+  counter-reset: step;
+}
+
+.steps__item {
+  position: relative;
+  min-height: 5rem;
+  max-width: 40ch;
+  padding: var(--space-3) 0 var(--space-8) calc(var(--marker-size) + var(--space-5));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  counter-increment: step;
+}
+
+.steps__item::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: var(--marker-size);
+  height: var(--marker-size);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-circle);
+  background: var(--color-surface);
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+}
+
+.steps__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: var(--marker-size);
+  bottom: 0;
+  left: calc(var(--marker-half) - 1px);
+  width: 2px;
+  background: var(--color-accent-line);
+}
+
+.steps__item:last-child {
+  padding-bottom: 0;
+}
+
+/* The last marker is filled so the sequence reads as a finished support ticket */
+.steps__item:last-child::before {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  box-shadow: 0 0 0 6px var(--color-accent-ring);
+}
+
+.price-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.price-card {
+  display: grid;
+  grid-template-areas:
+    "name value"
+    "text value";
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-5);
+}
+
+.price-card__name {
+  grid-area: name;
+}
+
+.price-card__text {
+  grid-area: text;
+  color: var(--color-muted);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-normal);
+}
+
+.price-card__value {
+  grid-area: value;
+  align-self: center;
+  color: var(--color-accent);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-title);
+  text-align: right;
+}
+
+.price-card__prefix {
+  display: block;
+  color: var(--color-muted);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+}
+
+.guarantees {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* align-content keeps a title-only item vertically centered next to taller neighbors */
+.guarantees__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-accent-tint);
+  line-height: var(--line-height-snug);
+}
+
+.guarantees__item::before {
+  --icon: var(--icon-check);
+
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  color: var(--color-accent);
+}
+
+.guarantees__text {
+  grid-column: 2;
+  color: var(--color-muted);
+  font-size: var(--font-size-small);
+}
+
+.details-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.details-list__item {
+  display: flex;
+  align-items: center;
+  min-height: 4.5rem;
+  padding: var(--space-4) var(--space-6);
+  border: 1px solid var(--color-on-accent-border);
+  border-radius: var(--radius-md);
+  background: var(--color-on-accent-fill);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  text-wrap: balance;
+}
+
+.details-list__item--highlight {
+  border-color: var(--color-surface);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.faq-item {
+  border: var(--border-card);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  transition-property: border-color, background-color;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--easing-standard);
+}
+
+.faq-item[open] {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+}
+
+.faq-item__question {
+  --focus-offset: 2px;
+  --focus-radius: var(--radius-md);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--size-touch-target);
+  padding: var(--space-4) var(--space-5);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  list-style: none;
+  cursor: pointer;
+}
+
+/* Safari ignores list-style on <summary> and needs its own marker hidden */
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__question::after {
+  --icon: var(--icon-plus);
+
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  color: var(--color-accent);
+  transition: transform var(--duration-fast) var(--easing-standard);
+}
+
+.faq-item[open] .faq-item__question::after {
+  transform: rotate(45deg);
+}
+
+.faq-item__answer {
+  max-width: var(--measure);
+  padding: 0 var(--space-5) var(--space-5);
+  color: var(--color-muted);
+}
+
+.faq-item[open] .faq-item__answer {
+  animation: fade-down var(--duration-medium) var(--easing-standard);
+}
+
+.device {
+  --device-detail-size: 0.65rem;
+  --device-text-start: 4.75rem;
+
+  position: relative;
+  z-index: 1;
+  width: min(100%, 25rem);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-device);
+  transform: rotate(-2deg);
+}
+
+.device__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 2.4rem;
+  padding-inline: var(--space-4);
+  border-bottom: var(--border-card);
+  background: var(--color-background);
+}
+
+.device__dot {
+  width: var(--device-detail-size);
+  height: var(--device-detail-size);
+  border-radius: var(--radius-circle);
+  background: var(--color-border);
+}
+
+.device__screen {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.device__line {
+  width: 80%;
+  height: 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+}
+
+.device__line--short {
+  width: 50%;
+}
+
+.device__panel {
+  position: relative;
+  height: 6.5rem;
+  margin-top: var(--space-3);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(var(--color-border), var(--color-border)) no-repeat var(--device-text-start) 2.25rem / 45% var(--device-detail-size),
+    linear-gradient(var(--color-border), var(--color-border)) no-repeat var(--device-text-start) 3.6rem / 28% var(--device-detail-size),
+    var(--color-background);
+}
+
+.device__panel::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 1.1rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: var(--radius-circle);
+  background: var(--color-whatsapp);
+  transform: translateY(-50%);
+}
+
+.device__panel::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2.05rem;
+  width: 0.6rem;
+  height: 1.1rem;
+  border-right: 3px solid var(--color-surface);
+  border-bottom: 3px solid var(--color-surface);
+  transform: translateY(-62%) rotate(45deg);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-whatsapp-glow);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    translate: 0 calc(-1 * var(--space-1));
+  }
+}
+
+/* Uses `translate` instead of `transform` so it doesn't override the cards' hover lift */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 var(--space-5);
+  }
+}

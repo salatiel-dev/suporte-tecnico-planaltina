@@ -1,0 +1,199 @@
+/* Tablet */
+@media (min-width: 40rem) {
+  .button {
+    width: auto;
+  }
+
+  .contact-card__button {
+    padding-inline: var(--space-7);
+  }
+
+  .button__phone {
+    display: inline;
+  }
+
+  .button__phone::before {
+    content: "· ";
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .stats__item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: 0;
+  }
+
+  .stats__item + .stats__item {
+    padding-left: var(--space-6);
+    border-top: 0;
+    border-left: var(--border-card);
+  }
+
+  .service-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* An odd card out spans the whole row instead of leaving a hole */
+  .service-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .price-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* The 1fr middle row pushes every price to the bottom, so prices line up across cards */
+  .price-card {
+    grid-template-areas:
+      "name"
+      "text"
+      "value";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .price-card__value {
+    align-self: end;
+    margin-top: var(--space-3);
+    text-align: left;
+  }
+
+  .guarantees {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .details-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Desktop */
+@media (min-width: 60rem) {
+  .hero {
+    padding-block: 6rem 9rem;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-16);
+  }
+
+  .hero__lead {
+    margin-bottom: var(--space-10);
+  }
+
+  .hero__visual {
+    display: grid;
+  }
+
+  .stats {
+    margin-top: -4.5rem;
+  }
+
+  .business {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .services-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+  }
+
+  .steps__item {
+    min-height: 0;
+    max-width: none;
+    padding: calc(var(--marker-size) + var(--space-5)) 0 0;
+  }
+
+  .steps__item:not(:last-child)::after {
+    top: calc(var(--marker-half) - 1px);
+    right: calc(-1 * var(--space-6));
+    bottom: auto;
+    left: calc(var(--marker-size) + var(--space-2));
+    width: auto;
+    height: 2px;
+  }
+
+  .about {
+    grid-template-columns: 16rem 1fr;
+    gap: var(--space-16);
+  }
+
+  .about__photo {
+    width: 100%;
+  }
+
+  .price-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .faq {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .contact-card {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-16);
+  }
+
+  .contact-card__qr {
+    display: grid;
+  }
+}
+
+/* Scoped to screen so content hidden before its reveal still prints */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .reveal:not(.reveal--visible) {
+    opacity: 0;
+  }
+
+  .reveal--visible {
+    animation: reveal var(--duration-slow) var(--easing-emphasized) var(--reveal-delay, 0ms) backwards;
+  }
+}
+
+/* Zeroing the motion tokens turns off every transition, animation and hover movement at once */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0s;
+    --duration-medium: 0s;
+    --duration-pulse: 0s;
+    --duration-spin: 0s;
+    --motion-lift: 0px;
+    --motion-grow: 1;
+    --motion-shrink: 1;
+    --motion-drop: 0px;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  .whatsapp-float {
+    display: none;
+  }
+}

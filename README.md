@@ -36,7 +36,6 @@ Sem frameworks, dependências ou etapa de build. A página funciona sem JavaScri
 │   │   ├── config.js          Seletores e parâmetros
 │   │   └── modules/           Animação ao rolar, botão flutuante e checagem do navegador
 │   └── img/                   Foto e QR Code
-├── sitemap.xml                Mapa do site para mecanismos de busca
 ├── CLAUDE.md                  Instruções para o assistente de código
 └── .gitignore
 ```

@@ -1,7 +1,6 @@
 .button--whatsapp::before,
 .whatsapp-float::before,
 .business__item::before,
-.guarantees__item::before,
 .faq-item__question::after {
   content: "";
   flex: none;
@@ -309,82 +308,6 @@
   background: var(--color-accent);
   color: var(--color-surface);
   box-shadow: 0 0 0 6px var(--color-accent-ring);
-}
-
-.price-list {
-  display: grid;
-  gap: var(--space-3);
-}
-
-.price-card {
-  display: grid;
-  grid-template-areas:
-    "name value"
-    "text value";
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  gap: var(--space-1) var(--space-4);
-  padding: var(--space-5);
-}
-
-.price-card__name {
-  grid-area: name;
-}
-
-.price-card__text {
-  grid-area: text;
-  color: var(--color-muted);
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-normal);
-}
-
-.price-card__value {
-  grid-area: value;
-  align-self: center;
-  color: var(--color-accent);
-  font-size: var(--font-size-lead);
-  font-weight: var(--font-weight-extrabold);
-  line-height: var(--line-height-title);
-  text-align: right;
-}
-
-.price-card__prefix {
-  display: block;
-  color: var(--color-muted);
-  font-size: var(--font-size-label);
-  font-weight: var(--font-weight-semibold);
-}
-
-.guarantees {
-  display: grid;
-  gap: var(--space-3);
-  margin-top: var(--space-6);
-}
-
-.guarantees__item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-content: center;
-  align-items: center;
-  gap: var(--space-1) var(--space-3);
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--radius-lg);
-  background: var(--color-accent-tint);
-  line-height: var(--line-height-snug);
-}
-
-.guarantees__item::before {
-  --icon: var(--icon-check);
-
-  width: var(--size-icon-sm);
-  height: var(--size-icon-sm);
-  color: var(--color-accent);
-}
-
-.guarantees__text {
-  grid-column: 2;
-  color: var(--color-muted);
-  font-size: var(--font-size-small);
 }
 
 .details-list {
